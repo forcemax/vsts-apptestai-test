@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "apptestai-test",
+    "name": "vsts extension for apptest.ai test execution",
+    "version": "0.0.1",
+    "publisher": "apptestai",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "vsts extension for apptest.ai test execution.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "apptest.ai"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "apptestai-test",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apptest.ai"
+            }
+        }
+    ]
+}
