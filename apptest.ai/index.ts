@@ -143,7 +143,6 @@ async function run() {
       
         let testsetname: string | undefined = tl.getInput('test_set_name');
         if (!testsetname) {
-            tl.getVariable("")
             testsetname = tl.getVariable("Build.SourceVersionMessage");
             if (testsetname) {
                 testsetname = clear_commit_message(testsetname);
@@ -152,7 +151,7 @@ async function run() {
             }
         }
     
-        console.log((new Date()).toTimeString() + ' testsetname : ' + testsetname);
+        // console.log((new Date()).toTimeString() + ' testsetname : ' + testsetname);
 
         let ts_id;
         try {

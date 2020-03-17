@@ -1,6 +1,6 @@
 {
   "name": "apptestai-test",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "vsts extension for apptest.ai test execution",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,8 @@
     "@types/request": "^2.48.4",
     "ansi-colors": "^4.1.1",
     "azure-pipelines-task-lib": "^2.9.3",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@types/mocha": "^7.0.2",
