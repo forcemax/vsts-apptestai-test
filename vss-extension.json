@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "apptestai-test",
     "name": "apptest.ai test",
-    "version": "0.0.6",
+    "version": "0.1.0",
     "publisher": "apptestai",
     "targets": [
         {
@@ -14,12 +14,19 @@
         "Azure Pipelines"
     ],
     "icons": {
-        "default": "images/extension-icon.png"        
+        "default": "icon.png"        
     },
     "files": [
         {
-            "path": "apptest.ai"
+            "path": "tasks/apptest.ai"
         }
+    ],
+    "tags": [
+        "mobile test",
+        "ios",
+        "android",
+        "test task",
+        "testing"
     ],
     "contributions": [
         {
@@ -29,7 +36,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "apptest.ai"
+                "name": "tasks/apptest.ai"
             }
         }
     ]

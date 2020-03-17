@@ -29,9 +29,9 @@ function execute_test(accesskey:string, projectid:string, packagefile:string, te
             if (!error && response.statusCode == 200) {
                 resolve(body);
             } else {
-                if (error) 
+                if (error) {
                     reject(new Error("Test initiation failed."));
-                else {
+                } else {
                     reject(new Error("HTTP status code : " + String(response.statusCode)));
                 }
             }
@@ -57,9 +57,9 @@ function check_finish(accesskey:string, projectid:string, ts_id:number) {
             if (!error && response.statusCode == 200) {
                 resolve(body);
             } else {
-                if (error) 
+                if (error) {
                     reject(new Error("Check finish failed."));
-                else {
+                } else {
                     reject(new Error("HTTP status code : " + String(response.statusCode)));
                 }
             }
@@ -150,8 +150,6 @@ async function run() {
                 testsetname = tl.getVariable("Build.SourceVersion");
             }
         }
-    
-        // console.log((new Date()).toTimeString() + ' testsetname : ' + testsetname);
 
         let ts_id;
         try {
@@ -167,7 +165,7 @@ async function run() {
             }
             ts_id = ret['data']['tsid'];
 
-            console.log((new Date()).toTimeString() + " Test initiated.");
+            console.log(" Test initiated.");
         } catch(error) {
           // Promise rejected
           throw Error(error);
@@ -179,7 +177,7 @@ async function run() {
             // wait for next try
             await wait(15000);
             step_count = step_count + 1;
-            console.log((new Date()).toTimeString() + " Test is progressing... " + String(step_count * 15) + "sec.");
+            console.log(" Test is progressing... " + String(step_count * 15) + "sec.");
             
             try {
                 let http_promise_check = check_finish(accesskey, projectid, ts_id);
@@ -191,7 +189,7 @@ async function run() {
     
                 let ret = JSON.parse(resp);
                 if (ret['complete'] == true) {
-                    console.log((new Date()).toTimeString() + " Test finished.");
+                    console.log(" Test finished.");
             
                     var errors = get_error_in_json(ret['data']['result_json']);
                     if (errors) {
@@ -223,5 +221,7 @@ async function run() {
         tl.setResult(tl.TaskResult.Failed, error);
     }
 }
-
-run();
+module.exports = {get_error_in_json, get_result, execute_test, check_finish, clear_commit_message};
+if (require.main === module) {
+  run();
+}
