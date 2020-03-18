@@ -1,6 +1,6 @@
 {
   "name": "apptestai-test",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vsts extension for apptest.ai test execution",
   "main": "index.js",
   "scripts": {
