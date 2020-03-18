@@ -2,8 +2,9 @@
     "manifestVersion": 1,
     "id": "apptestai-test",
     "name": "apptest.ai test",
-    "version": "0.1.1",
+    "version": "0.1.4",
     "publisher": "apptestai",
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
@@ -15,6 +16,11 @@
     ],
     "icons": {
         "default": "icon.png"        
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
     },
     "files": [
         {

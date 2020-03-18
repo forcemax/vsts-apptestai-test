@@ -137,6 +137,10 @@ async function run() {
             throw Error("binary_path is required parameter.");
         }
       
+        if (accesskey.indexOf(':') == -1) {
+            throw Error("The format of access_key is incorrect.");
+        }
+
         if (!fs.existsSync(binarypath)) {
             throw Error("binary_path file not exists.")
         }

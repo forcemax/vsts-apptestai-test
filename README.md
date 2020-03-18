@@ -1,6 +1,6 @@
-# apptest.ai test action
+# apptest.ai test for Azure DevOps 
 
-vsts extension for apptest.ai test execution
+apptest.ai test execution task for [Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 ## Installation
 
