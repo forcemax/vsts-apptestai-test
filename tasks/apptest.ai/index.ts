@@ -10,18 +10,16 @@ function execute_test(accesskey:string, projectid:string, packagefile:string, pa
     return new Promise<string>((resolve, reject) => {
         let data = "";
         data += "{\"pid\": " + String(projectid);
-        data += ", \"testset_name\": \""+params['testset_name']+"\"";
-        if (params['time_limit']) {
-          data += ", \"time_limit\": "+params['time_limit'];
+        data += ", \"testset_name\": \"" + params['testset_name'] + "\"";
+        if (params['time_limit'] >= 5 && params['time_limit'] <= 30) {
+          data += ", \"time_limit\": " + params['time_limit'];
         }
-        if (params['use_vo']) {
-          data += ", \"use_vo\": "+params['use_vo'];
-        }
+        data += ", \"use_vo\": " + String(params['use_vo']);
         if (params['callback']) {
-          data += ", \"callback\": "+params['callback'];
+          data += ", \"callback\": \"" + params['callback'] + "\"";;
         }
-        if ('credentials' in params && params['credentials']['login_id'] && params['credentials']['login_pw']) {
-          data += ", \"credentials\": { \"login_id\": \"" + params['credentials']['login_id'] + "\", \"login_pw\": \"" + params['params']['login_pw'] + "\"}";
+        if ('credentials' in params && params['credentials'].login_id && params['credentials'].login_pw) {
+          data += ", \"credentials\": { \"login_id\": \"" + params['credentials']['login_id'] + "\", \"login_pw\": \"" + params['credentials']['login_pw'] + "\"}";
         }
         data += "}";
 
@@ -162,7 +160,21 @@ function clear_commit_message(commit_message: string) {
         return undefined;
     }
 }
-  
+
+function getBoolean(value: any) {
+    switch(value){
+         case true:
+         case "true":
+         case 1:
+         case "1":
+         case "on":
+         case "yes":
+             return true;
+         default: 
+             return false;
+     }
+ }
+ 
 async function run() {
     try {
         let running = true;
@@ -171,8 +183,8 @@ async function run() {
         const binarypath: string | undefined = tl.getInput('binary_path', true);
 
         let testsetname: string | undefined = tl.getInput('testset_name', false);
-        const timelimit = tl.getInput('time_limit', false);
-        const usevo = tl.getInput('use_vo', false);
+        const timelimit: number = Number(tl.getInput('time_limit', false)) || 0;
+        const usevo: boolean = getBoolean(tl.getInput('use_vo', false));
         const callback = tl.getInput('callback', false);
         const loginid = tl.getInput('login_id', false);
         const loginpw = tl.getInput('login_pw', false);
@@ -213,7 +225,7 @@ async function run() {
             params['time_limit'] = timelimit;
             params['use_vo'] = usevo;
             params['callback'] = callback;
-            let credentials : any = {}
+            let credentials : any = {};
             credentials['login_id'] = loginid;
             credentials['login_pw'] = loginpw;
             params['credentials'] = credentials;
