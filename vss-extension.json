@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "apptestai-test",
     "name": "apptest.ai test",
-    "version": "0.2.0",
+    "version": "0.2.2",
     "publisher": "apptestai",
     "public": true,
     "targets": [
@@ -25,6 +25,18 @@
     "files": [
         {
             "path": "tasks/apptest.ai"
+        },
+        {
+            "path": "src/apptest.ai/node_modules",
+            "packagePath": "tasks/apptest.ai/node_modules"
+        },
+        {
+            "path": "src/apptest.ai/task.json",
+            "packagePath": "tasks/apptest.ai/task.json"
+        },
+        {
+            "path": "src/apptest.ai/package.json",
+            "packagePath": "tasks/apptest.ai/package.json"
         }
     ],
     "tags": [
